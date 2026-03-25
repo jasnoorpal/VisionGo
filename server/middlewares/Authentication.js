@@ -1,12 +1,15 @@
 import jwt from "jsonwebtoken";
+import { errorResponse } from "../utils/response.js";
 
 export const validateUser = (req, res, next) => {
     const auth = req.headers.authorization;
 
     if (!auth) {
-        return res.status(403).json({
-            message: "Unauthorized, JWT token is required"
-        });
+        return errorResponse(
+            res,
+            "Unauthorized, JWT token is required",
+            403
+        )
     }
 
     try {
@@ -16,8 +19,10 @@ export const validateUser = (req, res, next) => {
         req.user = decoded;
         next();
     } catch (error) {
-        return res.status(401).json({
-            message: "Unauthorized, JWT token is wrong or expired"
-        });
+        return errorResponse(
+            res,
+            "Unauthorized, JWT token is wrong or expired",
+            401
+        )
     }
 };

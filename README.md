@@ -1,51 +1,56 @@
 # Vision Go 🚀
 
-Backend for **Vision Go**, a full-stack career guidance and progress tracking platform.
-
----
-
-## 📌 Overview
-
-This repository currently contains the **backend (server)** of the Vision Go application.
-It handles user authentication, validation, and API endpoints for managing user data.
-
-Frontend (client) will be added soon.
+**Vision Go**, a full-stack career guidance and progress tracking platform.
 
 ---
 
 ## ⚙️ Tech Stack
 
+### Frontend
+
+- React.js (Vite)
+- React Router DOM
+- Context API (Global Auth State)
+- Tailwind CSS
+- Lucide Icons
+
+### Backend
+
 - Node.js
 - Express.js
 - MongoDB
-- JWT Authentication
-- Joi Validation
 
 ---
 
-## 🔐 Features (Backend)
+## 🔐 Features
 
-- User Signup & Login
-- Password hashing using bcrypt
-- JWT-based authentication
-- Input validation using Joi
-- Protected routes with middleware
-- Structured API responses
+- 🔐 Authentication system (JWT-based)
+- 🧠 Auto-login & session persistence
+- 🛡️ Protected routes
+- 🧩 Clean architecture using React Context
+- 📊 Scalable backend with REST APIs
 
 ---
 
 ## 📁 Project Structure
 
 ```
-server/
-├── config/
-├── controllers/
-├── middlewares/
-├── models/
-├── routes/
-├── utils/
-├── validations/
-└── server.js
+VisionGo/
+├── client/ # React Frontend (Vite)
+│ ├── components/
+│ ├── context/
+│ ├── hooks/
+│ ├── pages/
+│ └── ...
+│
+├── server/ # Express Backend
+│ ├── config/
+│ ├── controllers/
+│ ├── middlewares/
+│ ├── models/
+│ ├── routes/
+│ ├── utils/
+│ └── server.js
 ```
 
 ---
@@ -54,48 +59,73 @@ server/
 
 ### 1. Clone the repository
 
-```
 git clone https://github.com/jasnoorpal/VisionGo.git
-cd VisionGo/server
-```
 
-### 2. Install dependencies
+cd VisionGo
 
-```
+---
+
+### 2. Setup Backend
+
+cd server
+
 npm install
-```
 
-### 3. Create `.env` file
+Create `.env` file:
 
-```
-PORT=5000
+PORT=8080
+
 MONGO_URI=your_mongodb_connection_string
+
 JWT_SECRET=your_secret_key
-```
 
-### 4. Run the server
+Run server:
 
-```
 npm run dev
-```
+
+---
+
+### 3. Setup Frontend
+
+cd client
+
+npm install
+
+npm run dev
 
 ---
 
 ## 📡 API Endpoints
 
-### Auth Routes
+### 🔐 Auth Routes
 
-- `POST /auth/register` → Register new user
-- `POST /auth/login` → Login user
+- `POST /api/auth/signup` → Register user
+- `POST /api/auth/login` → Login user
+- `GET /api/auth` → Verify user (Protected)
+
+---
+
+## 🔄 App Flow
+
+User Login/Signup
+↓
+Token stored (localStorage)
+↓
+AuthContext manages state
+↓
+Auto-login on reload
+↓
+Protected Routes → Dashboard
 
 ---
 
 ## 🧠 Future Plans
 
-- Add frontend (React)
-- Dashboard & protected routes
-- Career tracking features
-- Progress analytics
+- Career recommendation engine
+- Progress tracking system
+- Admin dashboard
+- Role-based authentication
+- UI/UX improvements
 
 ---
 
@@ -105,13 +135,7 @@ This project is currently under development. Contributions and suggestions are w
 
 ---
 
-## 📌 Note
-
-Frontend will be added in the `client/` folder soon.
-
----
-
 ## 👨‍💻 Author
 
-Jasnoor Pal Singh
+Jasnoor Pal Singh -
 "Learning to create, creating to inspire"
