@@ -12,6 +12,8 @@ import Careers from "./pages/Careers";
 import AllCareers from "./pages/AllCareers";
 import CareerDetails from "./pages/CareerDetails";
 
+import LearningPage from "./pages/LearningPage";
+
 function App() {
   return (
     <Routes>
@@ -32,6 +34,7 @@ function App() {
           {/* <Route path="/admin" element={<AdminPanel />} /> */}
           <Route path="*" element={<NotFound />} />
         </Route>
+        <Route path="/learn/:id" element={<LearningPage />} />
       </Route>
 
       {/* 404 */}

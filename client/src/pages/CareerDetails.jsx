@@ -1,11 +1,12 @@
 import React from "react";
-import { useParams } from "react-router-dom";
-import { careerDetail } from "../assets/careers";
+import { useParams, useNavigate } from "react-router-dom";
+import { careerDetails } from "../assets/careers";
 
 const CareerDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
 
-  const career = careerDetail;
+  const career = careerDetails.find((c) => c._id === id);
 
   if (!career) return <div>Career not found</div>;
 
@@ -63,6 +64,12 @@ const CareerDetails = () => {
           </div>
         ))}
       </div>
+      <button
+        onClick={() => navigate(`/learn/${career._id}`)}
+        className="bg-green-500 text-white px-4 py-2 rounded mt-4"
+      >
+        🚀 Start Learning
+      </button>
     </div>
   );
 };
