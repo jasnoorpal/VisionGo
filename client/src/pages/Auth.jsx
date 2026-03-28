@@ -1,18 +1,12 @@
 import { Compass } from "lucide-react";
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate, Navigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import LoginForm from "../components/LoginForm";
 import SignupForm from "../components/SignupForm";
-import { useAuth } from "../context/AuthContext";
 
 const Auth = () => {
   const { pageType: paramPageType } = useParams();
   const navigate = useNavigate();
-
-  // const { user } = useAuth();
-  // if (user) {
-  //   return <Navigate to="/dashboard" />;
-  // }
 
   const [pageType, setPageType] = useState(paramPageType || "login");
 

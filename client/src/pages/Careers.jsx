@@ -1,11 +1,16 @@
 import React from "react";
 import { Sparkle } from "lucide-react";
 import AllCareersList from "../components/AllCareersList";
+import ProgressTracker from "../components/ProgressTracker";
 import { Link } from "react-router-dom";
 
 const Careers = () => {
   return (
     <>
+      <div className="mb-8">
+        <ProgressTracker showTitle={true} />
+      </div>
+
       <div className="h-50 w-full flex gap-8">
         <div className="w-1/2 h-full border border-gray-500 rounded-xl flex items-center justify-center hover:shadow-xl transition ease-in">
           Select your career with AI <Sparkle className="ml-4" color="purple" />
