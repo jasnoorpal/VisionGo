@@ -12,9 +12,12 @@ const Careers = () => {
       </div>
 
       <div className="h-50 w-full flex gap-8">
-        <div className="w-1/2 h-full border border-gray-500 rounded-xl flex items-center justify-center hover:shadow-xl transition ease-in">
+        <Link
+          to="/quiz"
+          className="w-1/2 h-full border border-gray-500 rounded-xl flex items-center justify-center hover:shadow-xl transition ease-in"
+        >
           Select your career with AI <Sparkle className="ml-4" color="purple" />
-        </div>
+        </Link>
         <Link
           to="/careers/all"
           className="w-1/2 h-full border border-gray-500 rounded-xl flex items-center justify-center hover:shadow-xl transition ease-in"

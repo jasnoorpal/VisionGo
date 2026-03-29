@@ -1,22 +1,27 @@
 import { Link, useLocation, Outlet } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { LayoutDashboard, Compass, GraduationCap, LogOut } from "lucide-react";
+import { Compass, GraduationCap, LogOut, Home, Sparkles } from "lucide-react";
 
 export function Layout() {
   const location = useLocation();
   const { user, logout } = useAuth();
 
   const navItems = [
-    { path: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+    { path: "/home", label: "Home", icon: Home },
     { path: "/careers", label: "Careers", icon: GraduationCap },
-    { path: "/Page 3", label: "Assessment", icon: Compass },
+    { path: "/quiz", label: "AI Quiz", icon: Sparkles },
   ];
 
   return (
     <div>
       <aside className="fixed left-0 top-0 w-64 h-screen bg-white border-r border-r-2 border-blue-600 p-4 flex flex-col justify-between">
         <div>
-          <h2 className="text-xl font-bold mb-6">Vision Go</h2>
+          <div className="flex items-center gap-2 mb-8 px-2">
+            <Compass className="text-blue-600" size={28} />
+            <h2 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Vision Go
+            </h2>
+          </div>
 
           {navItems.map((item) => {
             const Icon = item.icon;
@@ -31,7 +36,7 @@ export function Layout() {
                       : "hover:bg-blue-200 transition ease-in-out"
                   }`}
                 >
-                  <Icon />
+                  <Icon size={20} />
                   {item.label}
                 </div>
               </Link>
@@ -39,12 +44,16 @@ export function Layout() {
           })}
         </div>
 
-        <div>
+        <div className="space-y-2">
+          <div className="p-2 text-sm text-gray-500 border-t pt-4">
+            <p className="font-medium">{user?.name}</p>
+            <p className="text-xs">{user?.email}</p>
+          </div>
           <button
             onClick={logout}
-            className="p-2 rounded hover:bg-red-500 hover:text-white transition ease-in-out duration-50"
+            className="w-full p-2 rounded hover:bg-red-500 hover:text-white transition ease-in-out duration-50 flex items-center gap-2"
           >
-            <LogOut /> Logout
+            <LogOut size={18} /> Logout
           </button>
         </div>
       </aside>
